@@ -1,9 +1,8 @@
-from astroquery.mast import Catalogs, Observations
-from astropy.io import fits
+from astroquery.mast import Observations
 
 # Read in your list of TIC IDs, for this example I'll just have
 # them in an array already.
-tids = ['2760710', '9006668', '9725627', '9727392', '12421862', '12423815']
+#tids = ['2760710', '9006668', '9725627', '9727392', '12421862', '12423815']
 with open(r"all_targets_S001_v1.csv") as sheet:
     sheet = sheet.readlines()
     print(sheet)
