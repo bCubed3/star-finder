@@ -29,13 +29,21 @@ def get_star_data(f_path):
     data = file[1].data
     times = data.field(0)
     flux = data.field(3)
+    print(file[0].header)
     file.close()
     return times, flux
 
 
 data_set = []
 
-for n, fp in enumerate(paths):
-    data_set.append(get_star_data(fp))
-    plt.plot(data_set[-1][0], data_set[-1][1], "b+", markersize=0.01, label=str(n))
+
+def plot_light_curve(file_pa):
+    data_set.append(get_star_data(file_pa))
+    plt.plot(data_set[-1][0], data_set[-1][1], "b+", markersize=0.01)
+
+
+#for n, fp in enumerate(paths[56:90]):
+#    plot_light_curve(fp)
+plot_light_curve(paths[0])
+plt.legend()
 plt.show()

@@ -11,8 +11,8 @@ with open(r"all_targets_S001_v1.csv") as sheet:
     tids = tids[6:]
 #tids = ['2760710', '9006668', '9725627', '9727392', '12421862', '12423815']
 print(tids)
-
-for tid in tids[:100]:
+n = 0
+for tid in tids[:50]:
     # This query will get all the TESS mission data for this TIC ID.
     obsTable = Observations.query_criteria(obs_collection="TESS", target_name=tid)
     # This gets all the products for the returned set of Sectors, e.g.,
@@ -22,3 +22,5 @@ for tid in tids[:100]:
     light_curves = Observations.filter_products(data_products, productSubGroupDescription="LC")
     # Let's download these files.
     Observations.download_products(light_curves)
+    n += 1
+    print(n)
